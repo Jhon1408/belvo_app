@@ -30,9 +30,11 @@ DEBUG = True
 
 ALLOWED_HOSTS = ["*"]
 
-TRUSTED_HOSTS = ["*"]
+CORS_ALLOW_CREDENTIALS = True
+CORS_ORIGIN_ALLOW_ALL = True
 
-TRUSTED_ORIGINS = ["*"]
+CSRF_TRUSTED_ORIGINS = ["*"]
+CORS_ORIGIN_WHITELIST = ["*"]
 
 
 # Application definition
