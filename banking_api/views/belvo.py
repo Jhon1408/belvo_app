@@ -67,7 +67,7 @@ class BelvoTransactionsApi(APIView, TokenHandler):
                 )
 
         belvo_api = BelvoAPI()
-        owner = belvo_api.get_all_owners(filters={"email": user.email})
+        owner = belvo_api.get_all_owners(filters={"email": user.email})["results"]
         if not owner:
             return Response(
                 {
@@ -87,7 +87,9 @@ class BelvoTransactionsApi(APIView, TokenHandler):
                 status=status.HTTP_200_OK,
             )
 
-        user_accounts = belvo_api.get_all_accounts(filters={"link": owner_link})
+        user_accounts = belvo_api.get_all_accounts(filters={"link": owner_link})[
+            "results"
+        ]
         if not user_accounts:
             return Response(
                 {
@@ -106,7 +108,7 @@ class BelvoTransactionsApi(APIView, TokenHandler):
         for account_id, account_link in zip(accounts_ids, accounts_links):
             user_transactions += belvo_api.get_all_transactions(
                 filters={"link": account_link, "account": account_id}
-            )
+            )["results"]
         if not user_transactions:
             return Response(
                 {
