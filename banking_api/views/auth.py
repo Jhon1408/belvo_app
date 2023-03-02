@@ -88,12 +88,16 @@ class AuthApi(APIView):
 
         return Response(
             {
-                "id": obj.pk,
-                "token": token,
-                "refresh": refresh,
-                "email": obj.email,
-                "username": obj.username,
-                "role": obj.role,
+                "code": "success",
+                "detailed": "Success",
+                "data": {
+                    "id": obj.pk,
+                    "token": token,
+                    "refresh": refresh,
+                    "email": obj.email,
+                    "username": obj.username,
+                    "role": obj.role,
+                },
             },
             status=status.HTTP_201_CREATED,
         )
@@ -189,12 +193,16 @@ class RefreshTokenApi(APIView):
 
         return Response(
             {
-                "id": obj.pk,
-                "token": token,
-                "refresh": refresh,
-                "email": obj.email,
-                "username": obj.username,
-                "role": obj.role,
+                "code": "success",
+                "detailed": "Success",
+                "data": {
+                    "id": obj.pk,
+                    "token": token,
+                    "refresh": refresh,
+                    "email": obj.email,
+                    "username": obj.username,
+                    "role": obj.role,
+                },
             },
             status=status.HTTP_201_CREATED,
         )
