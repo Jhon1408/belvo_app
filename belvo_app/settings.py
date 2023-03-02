@@ -30,6 +30,10 @@ DEBUG = True
 
 ALLOWED_HOSTS = ["*"]
 
+TRUSTED_HOSTS = ["*"]
+
+TRUSTED_ORIGINS = ["*"]
+
 
 # Application definition
 
