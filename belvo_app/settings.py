@@ -153,26 +153,10 @@ USE_TZ = True
 
 CACHES = {
     "default": {
-        "BACKEND": "django.core.cache.backends.db.DatabaseCache",
-        "LOCATION": "cacheops_cache",
-        "OPTIONS": {
-            "MAX_ENTRIES": 10000,
-            "DATABASE": "postgres",
-            "TABLE_NAME": "cacheops_cache",
-        },
+        "BACKEND": "django.core.cache.backends.filebased.FileBasedCache",
+        "LOCATION": os.path.join(BASE_DIR, "/temp/cache"),
+        "OPTIONS": {"MAX_ENTRIES": 100000},
     }
-}
-
-CACHEOPS_ENABLED = True
-
-CACHEOPS = {
-    "ops.cache.get": {"ops": "get", "cache": True, "timeout": 60 * 15},
-    "ops.cache.fetch": {
-        "ops": ("exact", "in", "range"),
-        "cache": True,
-        "timeout": 60 * 15,
-    },
-    "auth.*": {"ops": ("get", "fetch", "count", "aggregate"), "timeout": 60 * 15},
 }
 
 # Static files (CSS, JavaScript, Images)
