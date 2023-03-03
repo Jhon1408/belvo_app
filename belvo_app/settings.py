@@ -155,7 +155,12 @@ CACHES = {
     "default": {
         "BACKEND": "django.core.cache.backends.db.DatabaseCache",
         "LOCATION": "cacheops_cache",
-    },
+        "OPTIONS": {
+            "MAX_ENTRIES": 10000,
+            "DATABASE": "postgres",
+            "TABLE_NAME": "cacheops_cache",
+        },
+    }
 }
 
 CACHEOPS_ENABLED = True
