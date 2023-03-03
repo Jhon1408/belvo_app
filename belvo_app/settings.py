@@ -153,11 +153,12 @@ USE_TZ = True
 
 CACHES = {
     "default": {
-        "BACKEND": "django.core.cache.backends.filebased.FileBasedCache",
-        "LOCATION": os.path.join(BASE_DIR, "/temp/cache"),
-        "OPTIONS": {"MAX_ENTRIES": 100000},
+        "BACKEND": "django.core.cache.backends.db.DatabaseCache",
+        "LOCATION": "cacheops_cache",
     }
 }
+
+CACHEOPS_REDIS = False
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
