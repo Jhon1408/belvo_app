@@ -47,7 +47,12 @@ CORS_ALLOW_HEADERS = [
     "x-requested-with",
 ]
 
-CSRF_TRUSTED_ORIGINS = ["http://3.143.249.77"]
+CSRF_TRUSTED_ORIGINS = [
+    "http://3.143.249.77",
+    "http://ec2-18-221-137-237.us-east-2.compute.amazonaws.com",
+    "https://3.143.249.77",
+    "https://ec2-18-221-137-237.us-east-2.compute.amazonaws.com",
+]
 
 
 # Application definition
