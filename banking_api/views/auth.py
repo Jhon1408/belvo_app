@@ -25,11 +25,6 @@ class AuthApi(APIView):
                 "email": {"required": True, "type": "string"},
                 "password": {"required": True, "type": "string", "minlength": 7},
                 "keep_logged_in": {"required": True, "type": "boolean"},
-                "role": {
-                    "required": True,
-                    "type": "string",
-                    "allowed": ["user", "admin"],
-                },
             }
         )
         if not validator.validate(request.data):
@@ -44,7 +39,6 @@ class AuthApi(APIView):
 
         obj = User.objects.filter(
             email=request.data["email"],
-            role=request.data["role"],
         ).first()
 
         if not obj:
